@@ -80,7 +80,7 @@
             <div class="flex items-center gap-4">
                 <button onclick="toggleCart()" class="relative bg-pink-50 hover:bg-pink-100 text-veraPink border border-pink-200 px-4 py-2.5 rounded-full flex items-center gap-2.5 font-medium transition-all shadow-sm">
                     <i class="fa-solid fa-bag-shopping text-lg"></i>
-                    <span class="hidden sm:inline">Carrinho</span>
+                    <span class="hidden sm:inline">Sacola</span>
                     <span id="cart-count" class="bg-veraPink text-white text-xs w-5 h-5 rounded-full flex items-center justify-center font-bold">0</span>
                 </button>
             </div>
@@ -280,7 +280,7 @@
                 <!-- Cart Header -->
                 <div class="p-6 bg-pink-50 border-b border-pink-100 flex items-center justify-between">
                     <h3 class="font-fun font-bold text-xl text-gray-900 flex items-center gap-2">
-                        <i class="fa-solid fa-bag-shopping text-veraPink"></i> Seu Carrinho
+                        <i class="fa-solid fa-bag-shopping text-veraPink"></i> Sua Sacola
                     </h3>
                     <button onclick="toggleCart()" class="text-gray-400 hover:text-gray-600 p-2">
                         <i class="fa-solid fa-xmark text-xl"></i>
@@ -497,4 +497,85 @@
         }
 
         function toggleCart() {
-            const drawer = document.getElementById('cart
+            const drawer = document.getElementById('cart-drawer');
+            drawer.classList.toggle('hidden');
+        }
+
+        function updateCartUI() {
+            const container = document.getElementById('cart-items');
+            const countBadge = document.getElementById('cart-count');
+            const totalElement = document.getElementById('cart-total');
+
+            countBadge.innerText = cart.reduce((sum, item) => sum + item.qty, 0);
+
+            if(cart.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center py-12 text-gray-400">
+                        <i class="fa-solid fa-bag-shopping text-4xl mb-3 text-pink-200"></i>
+                        <p class="font-fun">Sua sacola está vazia.</p>
+                    </div>
+                `;
+                totalElement.innerText = "R$ 0,00";
+                return;
+            }
+
+            container.innerHTML = '';
+            let total = 0;
+
+            cart.forEach((item, index) => {
+                total += item.price * item.qty;
+                const div = document.createElement('div');
+                div.className = "flex items-center gap-4 bg-gray-50 p-3 rounded-2xl border border-gray-100";
+                div.innerHTML = `
+                    <img src="${item.image}" alt="${item.name}" class="w-16 h-16 object-cover rounded-xl">
+                    <div class="flex-1">
+                        <h4 class="font-fun font-bold text-sm text-gray-900">${item.name}</h4>
+                        <p class="text-xs text-gray-500">Tamanho: <span class="font-semibold text-veraPink">${item.size}</span></p>
+                        <p class="font-fun font-bold text-sm text-gray-900 mt-1">R$ ${item.price.toFixed(2).replace('.', ',')}</p>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <button onclick="changeQty(${index}, -1)" class="w-6 h-6 rounded-full bg-white border border-gray-200 flex items-center justify-center text-xs text-gray-600 hover:bg-gray-100">-</button>
+                        <span class="text-sm font-bold text-gray-800">${item.qty}</span>
+                        <button onclick="changeQty(${index}, 1)" class="w-6 h-6 rounded-full bg-white border border-gray-200 flex items-center justify-center text-xs text-gray-600 hover:bg-gray-100">+</button>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+
+            totalElement.innerText = `R$ ${total.toFixed(2).replace('.', ',')}`;
+        }
+
+        function changeQty(index, delta) {
+            cart[index].qty += delta;
+            if(cart[index].qty <= 0) {
+                cart.splice(index, 1);
+            }
+            updateCartUI();
+        }
+
+        function checkoutWhatsApp() {
+            if(cart.length === 0) {
+                alert("Sua sacola está vazia!");
+                return;
+            }
+
+            let message = "Olá! Gostaria de finalizar o seguinte pedido na Vera Kids:\n\n";
+            let total = 0;
+
+            cart.forEach(item => {
+                const sub = item.price * item.qty;
+                total += sub;
+                message += `• ${item.qty}x ${item.name} (Tamanho: ${item.size}) - R$ ${sub.toFixed(2).replace('.', ',')}\n`;
+            });
+
+            message += `\n*Total do Pedido: R$ ${total.toFixed(2).replace('.', ',')}*\n\nAguardo instruções para pagamento e entrega!`;
+
+            const encoded = encodeURIComponent(message);
+            window.open(`https://wa.me/5569992059646?text=${encoded}`, '_blank');
+        }
+
+        // Initialize products on load
+        renderProducts('all');
+    </script>
+</body>
+</html>
