@@ -13,20 +13,20 @@
                     colors: {
                         veraPurple: '#8B5CF6',
                         veraPink: '#EC4899',
-                        veraBlue: '#3B82F6',
-                        veraYellow: '#F59E0B',
+                        veraBlue: '#38BDF8',
+                        veraYellow: '#FACC15',
                         veraGreen: '#10B981',
                         veraBg: '#FDFBF7'
                     },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
-                        fun: ['Fredoka', 'sans-serif', 'system-ui']
+                        fun: ['Fredoka', 'sans-serif']
                     }
                 }
             }
         }
     </script>
-    <!-- Google Fonts -->
+    <!-- Google Fonts - Fredoka & Inter -->
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -35,931 +35,424 @@
             font-family: 'Inter', sans-serif;
             background-color: #FDFBF7;
         }
-        .font-fun {
+        h1, h2, h3, .font-fun {
             font-family: 'Fredoka', sans-serif;
         }
-        /* Efeito de flutuação suave para banners */
         @keyframes float {
             0%, 100% { transform: translateY(0px); }
             50% { transform: translateY(-8px); }
         }
         .animate-float {
-            animation: float 4s ease-in-out infinite;
-        }
-        /* Ocultar barra de rolagem horizontal se necessário */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #FDFBF7;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #D8B4FE;
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #C084FC;
+            animation: float 3s ease-in-out infinite;
         }
     </style>
 </head>
-<body class="text-gray-700 antialiased min-h-screen flex flex-col selection:bg-purple-200 selection:text-purple-900">
+<body class="bg-veraBg text-gray-800 antialiased selection:bg-veraPink selection:text-white">
 
-    <!-- BARRA DE ANÚNCIO SUPERIOR -->
-    <div class="bg-gradient-to-r from-purple-500 via-pink-500 to-blue-500 text-white text-xs sm:text-sm py-2 px-4 text-center font-medium tracking-wide shadow-inner flex items-center justify-center gap-2">
-        <i class="fa-solid fa-gift text-yellow-200 animate-bounce"></i>
-        <span>Frete Grátis para todo o Brasil nas compras acima de R$ 199,00! 🚚 Parcele em até 6x sem juros.</span>
+    <!-- Top Announcement Bar -->
+    <div class="bg-gradient-to-r from-veraPurple via-veraPink to-veraYellow text-white text-xs sm:text-sm font-medium py-2 px-4 text-center shadow-inner">
+        <span>✨ Frete Grátis para todo o Brasil nas compras acima de R$ 150 | Parcele em até 6x sem juros! 🧸</span>
     </div>
 
-    <!-- CABEÇALHO -->
-    <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md shadow-sm border-b border-purple-100 transition-all duration-300">
+    <!-- Header / Navbar -->
+    <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md shadow-sm border-b border-pink-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            
-            <!-- LOGOTIPO E SLOGAN -->
+            <!-- Logo -->
             <a href="#" class="flex items-center gap-3 group">
-                <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-purple-400 via-pink-400 to-yellow-300 flex items-center justify-center shadow-md transform group-hover:rotate-6 transition-transform">
-                    <i class="fa-solid fa-crown text-white text-xl"></i>
+                <div class="w-12 h-12 rounded-full bg-gradient-to-tr from-veraPink to-veraYellow flex items-center justify-center text-white shadow-md group-hover:scale-105 transition-transform">
+                    <i class="fa-solid fa-crown text-xl"></i>
                 </div>
                 <div>
-                    <h1 class="font-fun text-2xl sm:text-3xl font-bold bg-gradient-to-r from-purple-600 via-pink-500 to-blue-500 bg-clip-text text-transparent tracking-tight">
-                        Vera Kids
-                    </h1>
-                    <p class="text-xs text-purple-600 font-medium tracking-wide">Pequenos estilos, grandes sonhos!</p>
+                    <span class="text-2xl sm:text-3xl font-fun font-bold tracking-wide bg-gradient-to-r from-veraPurple via-veraPink to-veraBlue bg-clip-text text-transparent">Vera Kids</span>
+                    <p class="text-xs font-fun text-gray-500 tracking-wider">Moda Infantil</p>
                 </div>
             </a>
 
-            <!-- NAVEGAÇÃO DESKTOP -->
+            <!-- Navigation Links (Desktop) -->
             <nav class="hidden md:flex items-center gap-8 font-medium text-gray-600">
-                <a href="#produtos" class="hover:text-purple-600 transition-colors">Coleção</a>
-                <a href="#categorias" class="hover:text-purple-600 transition-colors">Categorias</a>
-                <a href="#sobre" class="hover:text-purple-600 transition-colors">Nossa História</a>
-                <a href="#depoimentos" class="hover:text-purple-600 transition-colors">Depoimentos</a>
-                <a href="#contato" class="hover:text-purple-600 transition-colors">Contato</a>
+                <a href="#home" class="hover:text-veraPink transition-colors">Início</a>
+                <a href="#produtos" class="hover:text-veraPink transition-colors">Coleção</a>
+                <a href="#sobre" class="hover:text-veraPink transition-colors">A Marca</a>
+                <a href="#depoimentos" class="hover:text-veraPink transition-colors">Depoimentos</a>
             </nav>
 
-            <!-- AÇÕES (CARRINHO E MENU MOBILE) -->
+            <!-- Actions / Cart Button -->
             <div class="flex items-center gap-4">
-                <!-- Botão Carrinho -->
-                <button onclick="toggleCart()" class="relative bg-purple-50 hover:bg-purple-100 text-purple-700 px-4 py-2.5 rounded-full font-medium transition-all flex items-center gap-2 border border-purple-200 shadow-sm">
+                <button onclick="toggleCart()" class="relative bg-pink-50 hover:bg-pink-100 text-veraPink border border-pink-200 px-4 py-2.5 rounded-full flex items-center gap-2.5 font-medium transition-all shadow-sm">
                     <i class="fa-solid fa-bag-shopping text-lg"></i>
-                    <span class="hidden sm:inline">Sacola</span>
-                    <span id="cart-badge" class="absolute -top-2 -right-2 bg-pink-500 text-white text-xs w-6 h-6 rounded-full flex items-center justify-center font-bold shadow-md hidden">0</span>
-                </button>
-
-                <!-- Botão Menu Mobile -->
-                <button onclick="toggleMobileMenu()" class="md:hidden text-gray-700 hover:text-purple-600 p-2 rounded-xl focus:outline-none">
-                    <i id="menu-icon" class="fa-solid fa-bars text-2xl"></i>
+                    <span class="hidden sm:inline">Carrinho</span>
+                    <span id="cart-count" class="bg-veraPink text-white text-xs w-5 h-5 rounded-full flex items-center justify-center font-bold">0</span>
                 </button>
             </div>
-        </div>
-
-        <!-- MENU MOBILE DROPDOWN -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-purple-100 px-6 py-4 space-y-3 shadow-lg transition-all">
-            <a href="#produtos" onclick="toggleMobileMenu()" class="block text-gray-700 hover:text-purple-600 font-medium py-1">Coleção</a>
-            <a href="#categorias" onclick="toggleMobileMenu()" class="block text-gray-700 hover:text-purple-600 font-medium py-1">Categorias</a>
-            <a href="#sobre" onclick="toggleMobileMenu()" class="block text-gray-700 hover:text-purple-600 font-medium py-1">Nossa História</a>
-            <a href="#depoimentos" onclick="toggleMobileMenu()" class="block text-gray-700 hover:text-purple-600 font-medium py-1">Depoimentos</a>
-            <a href="#contato" onclick="toggleMobileMenu()" class="block text-gray-700 hover:text-purple-600 font-medium py-1">Contato</a>
         </div>
     </header>
 
-    <!-- CONTEÚDO PRINCIPAL -->
-    <main class="flex-grow">
-
-        <!-- SEÇÃO HERO / DESTAQUE -->
-        <section class="relative overflow-hidden bg-gradient-to-b from-purple-50 via-pink-50/30 to-transparent py-12 sm:py-20">
-            <!-- Elementos decorativos de fundo -->
-            <div class="absolute -top-10 -left-10 w-40 h-40 bg-purple-200/40 rounded-full blur-2xl pointer-events-none"></div>
-            <div class="absolute top-20 right-10 w-60 h-60 bg-yellow-200/40 rounded-full blur-3xl pointer-events-none"></div>
-            <div class="absolute bottom-10 left-1/3 w-48 h-48 bg-blue-200/30 rounded-full blur-2xl pointer-events-none"></div>
-
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                    
-                    <!-- Texto Hero -->
-                    <div class="text-center lg:text-left space-y-6">
-                        <div class="inline-flex items-center gap-2 bg-purple-100 text-purple-700 px-4 py-1.5 rounded-full text-sm font-semibold shadow-sm">
-                            <i class="fa-solid fa-star text-yellow-500"></i> Coleção Arco-Íris 2026 Disponível
-                        </div>
-                        <h2 class="font-fun text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
-                            Moda infantil cheia de <span class="bg-gradient-to-r from-purple-600 via-pink-500 to-yellow-500 bg-clip-text text-transparent">alegria e cor!</span>
-                        </h2>
-                        <p class="text-lg text-gray-600 max-w-xl mx-auto lg:mx-0">
-                            Roupas confortáveis, lúdicas e cheias de estilo para acompanhar cada fase e brincadeira dos pequenos com muita liberdade e fofura.
-                        </p>
-                        <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
-                            <a href="#produtos" class="w-full sm:w-auto bg-gradient-to-r from-purple-600 to-pink-500 hover:from-purple-700 hover:to-pink-600 text-white font-semibold px-8 py-4 rounded-2xl shadow-lg shadow-purple-500/25 transition-all transform hover:-translate-y-0.5 text-center flex items-center justify-center gap-3">
-                                <span>Ver Coleção Completa</span>
-                                <i class="fa-solid fa-arrow-right"></i>
-                            </a>
-                            <a href="#categorias" class="w-full sm:w-auto bg-white hover:bg-purple-50 text-purple-700 border border-purple-200 font-semibold px-6 py-4 rounded-2xl shadow-sm transition-all text-center">
-                                Explorar Categorias
-                            </a>
-                        </div>
-                        
-                        <!-- Selos de Confiança -->
-                        <div class="grid grid-cols-3 gap-4 pt-6 border-t border-purple-100 text-center lg:text-left">
-                            <div class="flex items-center gap-2 justify-center lg:justify-start">
-                                <div class="w-8 h-8 rounded-full bg-green-100 text-green-600 flex items-center justify-center text-sm">
-                                    <i class="fa-solid fa-check"></i>
-                                </div>
-                                <span class="text-xs sm:text-sm font-medium text-gray-600">Tecido Antialérgico</span>
-                            </div>
-                            <div class="flex items-center gap-2 justify-center lg:justify-start">
-                                <div class="w-8 h-8 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-sm">
-                                    <i class="fa-solid fa-truck-fast"></i>
-                                </div>
-                                <span class="text-xs sm:text-sm font-medium text-gray-600">Envio Rápido</span>
-                            </div>
-                            <div class="flex items-center gap-2 justify-center lg:justify-start">
-                                <div class="w-8 h-8 rounded-full bg-pink-100 text-pink-600 flex items-center justify-center text-sm">
-                                    <i class="fa-solid fa-shield-heart"></i>
-                                </div>
-                                <span class="text-xs sm:text-sm font-medium text-gray-600">Compra Segura</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Imagem / Ilustração Hero -->
-                    <div class="relative flex justify-center">
-                        <div class="relative w-full max-w-md aspect-square bg-gradient-to-tr from-purple-200 via-pink-200 to-yellow-200 rounded-3xl shadow-2xl p-4 animate-float flex items-center justify-center overflow-hidden">
-                            <div class="absolute inset-0 bg-white/40 backdrop-blur-sm rounded-3xl"></div>
-                            <img src="https://placehold.co/600x600/f3e8ff/8b5cf6?text=Vera+Kids+Moda+Infantil" alt="Vera Kids Vitrine" class="relative z-10 w-full h-full object-cover rounded-2xl shadow-inner">
-                            <div class="absolute bottom-6 left-6 right-6 z-20 bg-white/90 backdrop-blur-md p-4 rounded-2xl shadow-lg border border-purple-100 flex items-center justify-between">
-                                <div>
-                                    <span class="text-xs font-bold text-pink-500 uppercase tracking-wider">Mais Vendido</span>
-                                    <h4 class="font-fun font-bold text-gray-800 text-sm">Vestido Arco-Íris Pastel</h4>
-                                </div>
-                                <span class="font-bold text-purple-600 text-lg">R$ 89,90</span>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <!-- SEÇÃO DE CATEGORIAS -->
-        <section id="categorias" class="py-16 bg-white">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center max-w-2xl mx-auto mb-12">
-                    <span class="text-purple-600 font-semibold text-sm uppercase tracking-wider bg-purple-50 px-4 py-1.5 rounded-full">Navegue por idade e estilo</span>
-                    <h3 class="font-fun text-3xl sm:text-4xl font-bold text-gray-900 mt-3">Categorias Especiais</h3>
-                    <p class="text-gray-600 mt-2">Escolha a categoria ideal para encontrar a roupinha perfeita.</p>
-                </div>
-
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                    <!-- Categoria: Bebês -->
-                    <button onclick="filterCategory('bebes')" class="group relative bg-gradient-to-b from-purple-50 to-purple-100/50 hover:from-purple-100 hover:to-purple-200 p-6 rounded-3xl text-center transition-all duration-300 shadow-sm hover:shadow-md border border-purple-100 flex flex-col items-center">
-                        <div class="w-16 h-16 rounded-2xl bg-purple-200 text-purple-700 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform shadow-inner">
-                            <i class="fa-solid fa-baby"></i>
-                        </div>
-                        <h4 class="font-fun font-bold text-gray-800 text-lg">Bebês</h4>
-                        <p class="text-xs text-purple-600 font-medium mt-1">0 a 2 anos</p>
-                    </button>
-
-                    <!-- Categoria: Meninas -->
-                    <button onclick="filterCategory('meninas')" class="group relative bg-gradient-to-b from-pink-50 to-pink-100/50 hover:from-pink-100 hover:to-pink-200 p-6 rounded-3xl text-center transition-all duration-300 shadow-sm hover:shadow-md border border-pink-100 flex flex-col items-center">
-                        <div class="w-16 h-16 rounded-2xl bg-pink-200 text-pink-700 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform shadow-inner">
-                            <i class="fa-solid fa-shirt"></i>
-                        </div>
-                        <h4 class="font-fun font-bold text-gray-800 text-lg">Meninas</h4>
-                        <p class="text-xs text-pink-600 font-medium mt-1">2 a 10 anos</p>
-                    </button>
-
-                    <!-- Categoria: Meninos -->
-                    <button onclick="filterCategory('meninos')" class="group relative bg-gradient-to-b from-blue-50 to-blue-100/50 hover:from-blue-100 hover:to-blue-200 p-6 rounded-3xl text-center transition-all duration-300 shadow-sm hover:shadow-md border border-blue-100 flex flex-col items-center">
-                        <div class="w-16 h-16 rounded-2xl bg-blue-200 text-blue-700 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform shadow-inner">
-                            <i class="fa-solid fa-child"></i>
-                        </div>
-                        <h4 class="font-fun font-bold text-gray-800 text-lg">Meninos</h4>
-                        <p class="text-xs text-blue-600 font-medium mt-1">2 a 10 anos</p>
-                    </button>
-
-                    <!-- Categoria: Calçados e Acessórios -->
-                    <button onclick="filterCategory('calcados')" class="group relative bg-gradient-to-b from-yellow-50 to-yellow-100/50 hover:from-yellow-100 hover:to-yellow-200 p-6 rounded-3xl text-center transition-all duration-300 shadow-sm hover:shadow-md border border-yellow-100 flex flex-col items-center">
-                        <div class="w-16 h-16 rounded-2xl bg-yellow-200 text-yellow-700 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform shadow-inner">
-                            <i class="fa-solid fa-shoe-prints"></i>
-                        </div>
-                        <h4 class="font-fun font-bold text-gray-800 text-lg">Calçados</h4>
-                        <p class="text-xs text-yellow-700 font-medium mt-1">Conforto e estilo</p>
-                    </button>
-                </div>
-            </div>
-        </section>
-
-        <!-- SEÇÃO DE PRODUTOS / VITRINE -->
-        <section id="produtos" class="py-16 bg-gray-50/50">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                
-                <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
-                    <div>
-                        <span class="text-purple-600 font-semibold text-sm uppercase tracking-wider">Vitrine Vera Kids</span>
-                        <h3 class="font-fun text-3xl font-bold text-gray-900 mt-1">Nossos Destaques</h3>
-                    </div>
-                    
-                    <!-- Filtros Rápidos -->
-                    <div class="flex flex-wrap items-center gap-2" id="filter-buttons">
-                        <button onclick="filterCategory('todos')" class="filter-btn active-filter bg-purple-600 text-white px-5 py-2 rounded-xl text-sm font-medium shadow-sm transition-all">Todos</button>
-                        <button onclick="filterCategory('bebes')" class="filter-btn bg-white hover:bg-purple-50 text-gray-700 border border-purple-100 px-5 py-2 rounded-xl text-sm font-medium shadow-sm transition-all">Bebês</button>
-                        <button onclick="filterCategory('meninas')" class="filter-btn bg-white hover:bg-purple-50 text-gray-700 border border-purple-100 px-5 py-2 rounded-xl text-sm font-medium shadow-sm transition-all">Meninas</button>
-                        <button onclick="filterCategory('meninos')" class="filter-btn bg-white hover:bg-purple-50 text-gray-700 border border-purple-100 px-5 py-2 rounded-xl text-sm font-medium shadow-sm transition-all">Meninos</button>
-                        <button onclick="filterCategory('calcados')" class="filter-btn bg-white hover:bg-purple-50 text-gray-700 border border-purple-100 px-5 py-2 rounded-xl text-sm font-medium shadow-sm transition-all">Calçados</button>
-                    </div>
-                </div>
-
-                <!-- GRID DE PRODUTOS -->
-                <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                    <!-- Os produtos serão injetados dinamicamente via JS -->
-                </div>
-
-            </div>
-        </section>
-
-        <!-- SEÇÃO SOBRE NÓS / NOSSA HISTÓRIA -->
-        <section id="sobre" class="py-16 bg-white overflow-hidden">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                    <div class="relative">
-                        <div class="absolute -inset-4 bg-gradient-to-r from-purple-200 via-pink-200 to-yellow-200 rounded-3xl blur-xl opacity-50"></div>
-                        <div class="relative bg-purple-50 rounded-3xl p-6 border border-purple-100 shadow-lg">
-                            <img src="https://placehold.co/600x400/faf5ff/8b5cf6?text=Vera+Kids+Atelie" alt="Sobre Vera Kids" class="rounded-2xl w-full h-64 sm:h-80 object-cover shadow-md">
-                            <div class="mt-6 grid grid-cols-3 gap-4 text-center">
-                                <div class="bg-white p-3 rounded-2xl shadow-sm">
-                                    <span class="block font-fun text-2xl font-bold text-purple-600">+10mil</span>
-                                    <span class="text-xs text-gray-500">Looks Entregues</span>
-                                </div>
-                                <div class="bg-white p-3 rounded-2xl shadow-sm">
-                                    <span class="block font-fun text-2xl font-bold text-pink-500">100%</span>
-                                    <span class="text-xs text-gray-500">Algodão Confort</span>
-                                </div>
-                                <div class="bg-white p-3 rounded-2xl shadow-sm">
-                                    <span class="block font-fun text-2xl font-bold text-yellow-500">4.9★</span>
-                                    <span class="text-xs text-gray-500">Nota das Mamães</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="space-y-6">
-                        <span class="text-purple-600 font-semibold text-sm uppercase tracking-wider bg-purple-50 px-4 py-1.5 rounded-full">Nossa essência</span>
-                        <h3 class="font-fun text-3xl sm:text-4xl font-bold text-gray-900 leading-tight">
-                            Pequenos estilos, grandes sonhos!
-                        </h3>
-                        <p class="text-gray-600 leading-relaxed">
-                            A **Vera Kids** nasceu do desejo de vestir crianças como crianças devem ser: livres, alegres e cheias de cor. Nossas peças são cuidadosamente selecionadas para garantir o máximo de conforto, durabilidade e maciez em cada abraço e em cada corrida pelo parquinho.
-                        </p>
-                        <p class="text-gray-600 leading-relaxed">
-                            Inspirados pelas cores suaves de um arco-íris pastel, acreditamos que a infância é a fase mais mágica da vida e merece ser celebrada com muito estilo e carinho.
-                        </p>
-                        <div class="pt-2">
-                            <a href="#produtos" class="inline-flex items-center gap-3 bg-purple-600 hover:bg-purple-700 text-white font-semibold px-6 py-3.5 rounded-2xl shadow-md transition-all">
-                                <span>Conheça Nossas Peças</span>
-                                <i class="fa-solid fa-heart text-pink-300"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- SEÇÃO DE DEPOIMENTOS -->
-        <section id="depoimentos" class="py-16 bg-gradient-to-b from-transparent via-purple-50/40 to-transparent">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center max-w-2xl mx-auto mb-12">
-                    <span class="text-purple-600 font-semibold text-sm uppercase tracking-wider bg-purple-50 px-4 py-1.5 rounded-full">O que dizem as famílias</span>
-                    <h3 class="font-fun text-3xl sm:text-4xl font-bold text-gray-900 mt-3">Amor em cada caixinha</h3>
-                    <p class="text-gray-600 mt-2">Veja o carinho de quem já recebeu os looks da Vera Kids em casa.</p>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <!-- Depoimento 1 -->
-                    <div class="bg-white p-8 rounded-3xl shadow-sm border border-purple-100 relative">
-                        <div class="text-yellow-400 text-sm mb-4 flex gap-1">
-                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                        </div>
-                        <p class="text-gray-600 italic text-sm leading-relaxed">
-                            "Simplesmente apaixonada pela qualidade! O tecido é super macio, não irrita a pele da minha bebê e as cores são ainda mais lindas ao vivo. Chegou super rápido!"
-                        </p>
-                        <div class="mt-6 flex items-center gap-4 pt-4 border-t border-gray-100">
-                            <div class="w-10 h-10 rounded-full bg-purple-200 text-purple-700 font-bold flex items-center justify-center font-fun">
-                                M
-                            </div>
-                            <div>
-                                <h5 class="font-bold text-gray-800 text-sm">Mariana Souza</h5>
-                                <p class="text-xs text-gray-400">Mãe da Lívia (1 ano)</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Depoimento 2 -->
-                    <div class="bg-white p-8 rounded-3xl shadow-sm border border-purple-100 relative">
-                        <div class="text-yellow-400 text-sm mb-4 flex gap-1">
-                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                        </div>
-                        <p class="text-gray-600 italic text-sm leading-relaxed">
-                            "Meu filho não quer tirar o conjunto dinossauro! Confortável para brincar, correr e super durável após várias lavagens. Recomendo de olhos fechados!"
-                        </p>
-                        <div class="mt-6 flex items-center gap-4 pt-4 border-t border-gray-100">
-                            <div class="w-10 h-10 rounded-full bg-blue-200 text-blue-700 font-bold flex items-center justify-center font-fun">
-                                C
-                            </div>
-                            <div>
-                                <h5 class="font-bold text-gray-800 text-sm">Carlos Eduardo</h5>
-                                <p class="text-xs text-gray-400">Pai do Noah (4 anos)</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Depoimento 3 -->
-                    <div class="bg-white p-8 rounded-3xl shadow-sm border border-purple-100 relative">
-                        <div class="text-yellow-400 text-sm mb-4 flex gap-1">
-                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                        </div>
-                        <p class="text-gray-600 italic text-sm leading-relaxed">
-                            "A caixinha veio com um cheirinho delicioso e um bilhete escrito à mão! Dá para ver o carinho e o cuidado que a Vera Kids tem com cada cliente. Sou cliente fiel!"
-                        </p>
-                        <div class="mt-6 flex items-center gap-4 pt-4 border-t border-gray-100">
-                            <div class="w-10 h-10 rounded-full bg-pink-200 text-pink-700 font-bold flex items-center justify-center font-fun">
-                                J
-                            </div>
-                            <div>
-                                <h5 class="font-bold text-gray-800 text-sm">Juliana Martins</h5>
-                                <p class="text-xs text-gray-400">Mãe da Beatriz (6 anos)</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- SEÇÃO DE CONTATO / WHATSAPP BANNER -->
-        <section id="contato" class="py-16 bg-gradient-to-r from-purple-600 via-pink-500 to-blue-500 text-white relative overflow-hidden">
-            <div class="absolute inset-0 bg-black/10"></div>
-            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center space-y-6">
-                <span class="inline-block bg-white/20 backdrop-blur-md px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider">Precisa de ajuda com tamanhos?</span>
-                <h3 class="font-fun text-3xl sm:text-4xl font-bold">Fale direto com nossa consultora pelo WhatsApp!</h3>
-                <p class="text-white/90 max-w-xl mx-auto text-sm sm:text-base">
-                    Temos atendimento humanizado para tirar dúvidas sobre medidas, tabelas de tamanhos ou disponibilidade de estoque.
+    <!-- Hero Section -->
+    <section id="home" class="relative overflow-hidden bg-gradient-to-b from-pink-50/60 via-purple-50/30 to-veraBg py-12 lg:py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div class="space-y-6 text-center lg:text-left">
+                <span class="inline-flex items-center gap-2 bg-white px-4 py-2 rounded-full shadow-sm text-veraPink font-fun text-sm border border-pink-100">
+                    <i class="fa-solid fa-star text-yellow-400"></i> Nova Coleção Primavera-Verão
+                </span>
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-fun font-bold leading-tight text-gray-900">
+                    Pequenos estilos, <br><span class="bg-gradient-to-r from-veraPurple to-veraPink bg-clip-text text-transparent">grandes sonhos!</span>
+                </h1>
+                <p class="text-lg text-gray-600 max-w-lg mx-auto lg:mx-0">
+                    Roupas infantis confortáveis, cheias de cor e carinho para acompanhar todas as brincadeiras e momentos mágicos dos seus pequenos.
                 </p>
-                <div>
-                    <a href="https://wa.me/5511999999999?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20as%20roupinhas%20da%20Vera%20Kids." target="_blank" class="inline-flex items-center gap-3 bg-white text-purple-700 hover:bg-purple-50 font-bold px-8 py-4 rounded-2xl shadow-xl transition-all transform hover:scale-105">
-                        <i class="fa-brands fa-whatsapp text-2xl text-green-600"></i>
-                        <span>Chamar no WhatsApp</span>
+                <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+                    <a href="#produtos" class="w-full sm:w-auto bg-gradient-to-r from-veraPink to-purple-600 text-white font-fun font-semibold px-8 py-4 rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all text-center">
+                        Ver Coleção Completa <i class="fa-solid fa-arrow-right ml-2"></i>
                     </a>
                 </div>
-            </div>
-        </section>
-
-    </main>
-
-    <!-- RODAPÉ -->
-    <footer class="bg-gray-900 text-white pt-16 pb-12 border-t border-purple-900/50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-10">
-            <div class="space-y-4">
-                <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-purple-400 via-pink-400 to-yellow-300 flex items-center justify-center shadow-md">
-                        <i class="fa-solid fa-crown text-white text-base"></i>
+                <div class="grid grid-cols-3 gap-4 pt-6 border-t border-gray-200/60 max-w-md mx-auto lg:mx-0 text-center lg:text-left">
+                    <div>
+                        <p class="font-fun font-bold text-2xl text-veraPurple">100%</p>
+                        <p class="text-xs text-gray-500">Algodão Confortável</p>
                     </div>
-                    <h2 class="font-fun text-2xl font-bold bg-gradient-to-r from-purple-400 via-pink-400 to-yellow-300 bg-clip-text text-transparent">
-                        Vera Kids
-                    </h2>
-                </div>
-                <p class="text-gray-400 text-sm leading-relaxed">
-                    Moda infantil cheia de cor e carinho. Pequenos estilos, grandes sonhos!
-                </p>
-                <div class="flex items-center gap-3 text-lg">
-                    <a href="#" class="w-9 h-9 rounded-full bg-gray-800 hover:bg-purple-600 text-white flex items-center justify-center transition-colors"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="#" class="w-9 h-9 rounded-full bg-gray-800 hover:bg-blue-600 text-white flex items-center justify-center transition-colors"><i class="fa-brands fa-facebook-f"></i></a>
-                    <a href="#" class="w-9 h-9 rounded-full bg-gray-800 hover:bg-green-600 text-white flex items-center justify-center transition-colors"><i class="fa-brands fa-whatsapp"></i></a>
+                    <div>
+                        <p class="font-fun font-bold text-2xl text-veraPink">Fast</p>
+                        <p class="text-xs text-gray-500">Envio para todo o País</p>
+                    </div>
+                    <div>
+                        <p class="font-fun font-bold text-2xl text-veraBlue">4.9★</p>
+                        <p class="text-xs text-gray-500">Avaliação das Mães</p>
+                    </div>
                 </div>
             </div>
 
-            <div>
-                <h4 class="font-fun font-bold text-base text-white mb-4">Categorias</h4>
-                <ul class="space-y-2.5 text-sm text-gray-400">
-                    <li><a href="#produtos" onclick="filterCategory('bebes')" class="hover:text-white transition-colors">Moda Bebê (0-2 anos)</a></li>
-                    <li><a href="#produtos" onclick="filterCategory('meninas')" class="hover:text-white transition-colors">Meninas Estilosas</a></li>
-                    <li><a href="#produtos" onclick="filterCategory('meninos')" class="hover:text-white transition-colors">Meninos Divertidos</a></li>
-                    <li><a href="#produtos" onclick="filterCategory('calcados')" class="hover:text-white transition-colors">Calçados & Acessórios</a></li>
-                </ul>
+            <!-- Hero Image / Visual Banner -->
+            <div class="relative flex justify-center">
+                <div class="relative w-full max-w-md rounded-3xl bg-gradient-to-tr from-pink-200 via-purple-200 to-yellow-100 p-3 shadow-2xl animate-float">
+                    <img src="https://images.unsplash.com/photo-1519457431-44ccd64a579b?q=80&w=800&auto=format&fit=crop" alt="Criança feliz com roupa Vera Kids" class="rounded-2xl object-cover w-full h-[400px]">
+                    <div class="absolute -bottom-6 -left-6 bg-white p-4 rounded-2xl shadow-xl flex items-center gap-3 border border-pink-100">
+                        <div class="w-10 h-10 rounded-full bg-pink-100 flex items-center justify-center text-veraPink">
+                            <i class="fa-solid fa-heart text-lg"></i>
+                        </div>
+                        <div>
+                            <p class="text-xs text-gray-500 font-medium">Mais vendido</p>
+                            <p class="font-fun font-bold text-gray-800">Vestido Arco-Íris</p>
+                        </div>
+                    </div>
+                </div>
             </div>
+        </div>
+    </section>
 
-            <div>
-                <h4 class="font-fun font-bold text-base text-white mb-4">Atendimento</h4>
-                <ul class="space-y-2.5 text-sm text-gray-400">
-                    <li><i class="fa-solid fa-headset mr-2 text-purple-400"></i> Suporte via WhatsApp</li>
-                    <li><i class="fa-solid fa-truck-moving mr-2 text-purple-400"></i> Rastrear Meu Pedido</li>
-                    <li><i class="fa-solid fa-rotate-left mr-2 text-purple-400"></i> Trocas e Devoluções</li>
-                    <li><i class="fa-solid fa-shield-halved mr-2 text-purple-400"></i> Política de Privacidade</li>
-                </ul>
-            </div>
-
-            <div>
-                <h4 class="font-fun font-bold text-base text-white mb-4">Newsletter</h4>
-                <p class="text-sm text-gray-400 mb-4">Cadastre-se para receber cupons de desconto exclusivos e novidades.</p>
-                <form onsubmit="subscribeNewsletter(event)" class="space-y-3">
-                    <input type="email" placeholder="Seu melhor e-mail" required class="w-full bg-gray-800 border border-gray-700 rounded-xl px-4 py-2.5 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-purple-500">
-                    <button type="submit" class="w-full bg-gradient-to-r from-purple-600 to-pink-500 hover:opacity-90 text-white font-semibold py-2.5 rounded-xl text-sm transition-all shadow-md">
-                        Quero Descontos!
-                    </button>
-                </form>
+    <!-- Categories Filter -->
+    <section id="produtos" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div class="text-center max-w-2xl mx-auto mb-12">
+            <h2 class="text-3xl sm:text-4xl font-fun font-bold text-gray-900 mb-4">Explore por Categoria</h2>
+            <p class="text-gray-600">Encontre o look perfeito para cada fase da infância com muito estilo e diversão.</p>
+            
+            <div class="flex flex-wrap justify-center gap-2 sm:gap-4 mt-8">
+                <button onclick="filterCategory('all')" class="cat-btn px-6 py-2.5 rounded-full font-fun font-medium bg-veraPink text-white shadow-md transition-all">Todos</button>
+                <button onclick="filterCategory('girls')" class="cat-btn px-6 py-2.5 rounded-full font-fun font-medium bg-white text-gray-600 border border-gray-200 hover:border-veraPink transition-all">Meninas</button>
+                <button onclick="filterCategory('boys')" class="cat-btn px-6 py-2.5 rounded-full font-fun font-medium bg-white text-gray-600 border border-gray-200 hover:border-veraPink transition-all">Meninos</button>
+                <button onclick="filterCategory('babies')" class="cat-btn px-6 py-2.5 rounded-full font-fun font-medium bg-white text-gray-600 border border-gray-200 hover:border-veraPink transition-all">Bebês</button>
+                <button onclick="filterCategory('shoes')" class="cat-btn px-6 py-2.5 rounded-full font-fun font-medium bg-white text-gray-600 border border-gray-200 hover:border-veraPink transition-all">Calçados</button>
             </div>
         </div>
 
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 pt-8 border-t border-gray-800 text-center text-xs text-gray-500">
-            &copy; 2026 Vera Kids - Moda Infantil. Todos os direitos reservados. Criado com carinho para pequenos sonhadores.
+        <!-- Products Grid -->
+        <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            <!-- Rendered via JavaScript -->
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="sobre" class="bg-purple-900/5 py-16 border-y border-purple-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div class="space-y-6">
+                <span class="bg-pink-100 text-veraPink px-4 py-1.5 rounded-full font-fun text-sm font-semibold">Feito com Amor</span>
+                <h2 class="text-3xl sm:text-4xl font-fun font-bold text-gray-900">Vestindo sorrisos e momentos inesquecíveis</h2>
+                <p class="text-gray-600 leading-relaxed">
+                    A **Vera Kids** nasceu do sonho de criar roupas infantis que unem o lúdico, o conforto absoluto e a durabilidade que os pais tanto procuram. Cada peça é cuidadosamente selecionada para garantir liberdade total aos movimentos das crianças, sem abrir mão do encanto e da delicadeza.
+                </p>
+                <div class="grid grid-cols-2 gap-4 pt-2">
+                    <div class="flex items-start gap-3">
+                        <div class="w-8 h-8 rounded-full bg-green-100 text-veraGreen flex items-center justify-center shrink-0 mt-1">
+                            <i class="fa-solid fa-check"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-fun font-bold text-gray-800">Tecidos Antialérgicos</h4>
+                            <p class="text-xs text-gray-500">Total segurança para peles sensíveis.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <div class="w-8 h-8 rounded-full bg-blue-100 text-veraBlue flex items-center justify-center shrink-0 mt-1">
+                            <i class="fa-solid fa-check"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-fun font-bold text-gray-800">Costura Reforçada</h4>
+                            <p class="text-xs text-gray-500">Pronto para todas as brincadeiras.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="relative flex justify-center">
+                <img src="https://images.unsplash.com/photo-1503944583220-7eeec395dcb5?q=80&w=800&auto=format&fit=crop" alt="Crianças brincando" class="rounded-3xl shadow-xl w-full max-w-md object-cover h-[350px]">
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="depoimentos" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div class="text-center max-w-xl mx-auto mb-12">
+            <h2 class="text-3xl font-fun font-bold text-gray-900 mb-2">O que dizem as mamães</h2>
+            <p class="text-gray-600">O carinho e a satisfação de quem já veste seus pequenos com a Vera Kids.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-pink-50 flex flex-col justify-between">
+                <p class="text-gray-600 text-sm italic mb-6">"Comprei o vestido arco-íris para o aniversário da minha filha e ela não quer mais tirar! A qualidade do tecido é impecável."</p>
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-full bg-pink-100 flex items-center justify-center font-fun font-bold text-veraPink">MC</div>
+                    <div>
+                        <h4 class="font-fun font-bold text-sm text-gray-900">Mariana Costa</h4>
+                        <span class="text-xs text-yellow-500">★★★★★</span>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-pink-50 flex flex-col justify-between">
+                <p class="text-gray-600 text-sm italic mb-6">"Entrega super rápida e o atendimento pelo WhatsApp foi maravilhoso. Os conjuntos de menino são muito confortáveis!"</p>
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center font-fun font-bold text-veraPurple">JS</div>
+                    <div>
+                        <h4 class="font-fun font-bold text-sm text-gray-900">Juliana Santos</h4>
+                        <span class="text-xs text-yellow-500">★★★★★</span>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-pink-50 flex flex-col justify-between">
+                <p class="text-gray-600 text-sm italic mb-6">"Apaixonada pelos detalhes! As roupinhas são lindas, cheirosas e muito bem acabadas. Recomendo de olhos fechados."</p>
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center font-fun font-bold text-veraBlue">AP</div>
+                    <div>
+                        <h4 class="font-fun font-bold text-sm text-gray-900">Amanda Pereira</h4>
+                        <span class="text-xs text-yellow-500">★★★★★</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-16 pb-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+            <div class="space-y-4">
+                <h3 class="text-2xl font-fun font-bold bg-gradient-to-r from-veraPink to-veraYellow bg-clip-text text-transparent">Vera Kids</h3>
+                <p class="text-gray-400 text-sm">Moda infantil com estilo, conforto e alegria para os pequenos crescerem sonhando alto.</p>
+            </div>
+            <div>
+                <h4 class="font-fun font-bold text-lg mb-4 text-pink-300">Navegação</h4>
+                <ul class="space-y-2 text-sm text-gray-400">
+                    <li><a href="#home" class="hover:text-white transition-colors">Início</a></li>
+                    <li><a href="#produtos" class="hover:text-white transition-colors">Coleção</a></li>
+                    <li><a href="#sobre" class="hover:text-white transition-colors">A Marca</a></li>
+                    <li><a href="#depoimentos" class="hover:text-white transition-colors">Depoimentos</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-fun font-bold text-lg mb-4 text-pink-300">Categorias</h4>
+                <ul class="space-y-2 text-sm text-gray-400">
+                    <li><a href="#produtos" class="hover:text-white transition-colors">Vestidos e Meninas</a></li>
+                    <li><a href="#produtos" class="hover:text-white transition-colors">Conjuntos Meninos</a></li>
+                    <li><a href="#produtos" class="hover:text-white transition-colors">Moda Bebê</a></li>
+                    <li><a href="#produtos" class="hover:text-white transition-colors">Calçados Infantis</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-fun font-bold text-lg mb-4 text-pink-300">Atendimento</h4>
+                <p class="text-sm text-gray-400 mb-2"><i class="fa-brands fa-whatsapp text-green-400 mr-2"></i> (69) 99205-9646</p>
+                <p class="text-sm text-gray-400"><i class="fa-solid fa-envelope text-pink-400 mr-2"></i> contato@verakids.com.br</p>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 border-t border-gray-800 text-center text-xs text-gray-500">
+            &copy; 2026 Vera Kids - Todos os direitos reservados.
         </div>
     </footer>
 
-    <!-- DRAWER / CARRINHO LATERAL -->
+    <!-- Cart Drawer Modal -->
     <div id="cart-drawer" class="fixed inset-0 z-50 overflow-hidden hidden">
-        <div id="cart-backdrop" onclick="toggleCart()" class="absolute inset-0 bg-black/50 backdrop-blur-sm transition-opacity opacity-0"></div>
+        <div class="absolute inset-0 bg-black/50 backdrop-blur-sm transition-opacity" onclick="toggleCart()"></div>
         <div class="absolute inset-y-0 right-0 max-w-full flex pl-10">
-            <div id="cart-panel" class="w-screen max-w-md bg-white shadow-2xl flex flex-col transform translate-x-full transition-transform duration-300 ease-in-out">
-                
-                <!-- Cabeçalho da Sacola -->
-                <div class="p-6 bg-purple-50 border-b border-purple-100 flex items-center justify-between">
-                    <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-xl bg-purple-600 text-white flex items-center justify-center shadow-sm">
-                            <i class="fa-solid fa-bag-shopping"></i>
-                        </div>
-                        <div>
-                            <h3 class="font-fun font-bold text-lg text-gray-800">Sua Sacola</h3>
-                            <p class="text-xs text-purple-600 font-medium"><span id="cart-item-count">0</span> itens selecionados</p>
-                        </div>
-                    </div>
-                    <button onclick="toggleCart()" class="text-gray-400 hover:text-gray-600 p-2 rounded-xl">
+            <div class="w-screen max-w-md bg-white shadow-2xl flex flex-col">
+                <!-- Cart Header -->
+                <div class="p-6 bg-pink-50 border-b border-pink-100 flex items-center justify-between">
+                    <h3 class="font-fun font-bold text-xl text-gray-900 flex items-center gap-2">
+                        <i class="fa-solid fa-bag-shopping text-veraPink"></i> Seu Carrinho
+                    </h3>
+                    <button onclick="toggleCart()" class="text-gray-400 hover:text-gray-600 p-2">
                         <i class="fa-solid fa-xmark text-xl"></i>
                     </button>
                 </div>
-
-                <!-- Corpo da Sacola (Lista de Produtos) -->
-                <div id="cart-items-container" class="flex-grow overflow-y-auto p-6 space-y-4 divide-y divide-gray-100">
-                    <!-- Dinâmico -->
+                <!-- Cart Body Items -->
+                <div id="cart-items" class="flex-1 overflow-y-auto p-6 space-y-4">
+                    <!-- Dynamic Cart Items -->
                 </div>
-
-                <!-- Rodapé da Sacola / Checkout -->
+                <!-- Cart Footer -->
                 <div class="p-6 bg-gray-50 border-t border-gray-100 space-y-4">
-                    <div class="flex justify-between items-center text-sm font-medium text-gray-600">
-                        <span>Subtotal</span>
-                        <span id="cart-subtotal" class="font-bold text-gray-900 text-lg">R$ 0,00</span>
+                    <div class="flex justify-between items-center text-lg font-bold text-gray-900">
+                        <span>Total:</span>
+                        <span id="cart-total" class="text-veraPink">R$ 0,00</span>
                     </div>
-                    <div class="flex justify-between items-center text-xs text-green-600 font-medium">
-                        <span>Frete</span>
-                        <span>Grátis acima de R$ 199</span>
-                    </div>
-                    <div class="pt-2 border-t border-gray-200 flex justify-between items-center text-base font-bold text-gray-900">
-                        <span>Total</span>
-                        <span id="cart-total" class="text-purple-600 text-xl font-fun">R$ 0,00</span>
-                    </div>
-
-                    <button onclick="checkoutWhatsApp()" class="w-full bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white font-bold py-4 rounded-2xl shadow-lg shadow-green-500/25 transition-all flex items-center justify-center gap-3">
-                        <i class="fa-brands fa-whatsapp text-2xl"></i>
-                        <span>Finalizar Pedido via WhatsApp</span>
+                    <button onclick="checkoutWhatsApp()" class="w-full bg-gradient-to-r from-green-500 to-emerald-600 text-white font-fun font-bold py-3.5 rounded-full shadow-lg hover:shadow-xl hover:opacity-95 transition-all flex items-center justify-center gap-2">
+                        <i class="fa-brands fa-whatsapp text-xl"></i> Finalizar Pedido via WhatsApp
                     </button>
-                    <p class="text-center text-xs text-gray-400">Você será redirecionado para o WhatsApp com seu pedido pronto.</p>
                 </div>
-
             </div>
         </div>
     </div>
 
-    <!-- MODAL DE DETALHES DO PRODUTO -->
-    <div id="product-modal" class="fixed inset-0 z-50 overflow-y-auto hidden flex items-center justify-center p-4">
-        <div onclick="closeModal()" class="fixed inset-0 bg-black/50 backdrop-blur-sm"></div>
-        <div class="relative bg-white rounded-3xl max-w-2xl w-full p-6 sm:p-8 shadow-2xl z-10 overflow-hidden border border-purple-100">
-            <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 w-10 h-10 bg-gray-50 rounded-full flex items-center justify-center transition-colors">
+    <!-- Product Details Modal -->
+    <div id="product-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm hidden">
+        <div class="bg-white rounded-3xl max-w-lg w-full overflow-hidden shadow-2xl relative animate-in fade-in zoom-in duration-200">
+            <button onclick="closeProductModal()" class="absolute top-4 right-4 z-10 bg-white/80 hover:bg-white text-gray-700 w-10 h-10 rounded-full flex items-center justify-center shadow-md">
                 <i class="fa-solid fa-xmark text-lg"></i>
             </button>
-            <div id="modal-content" class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-                <!-- Conteúdo injetado via JS -->
+            <div id="modal-content">
+                <!-- Dynamic Modal Content -->
             </div>
         </div>
     </div>
 
-    <!-- MODAL DE MENSAGEM / ALERTA BONITO -->
-    <div id="toast-message" class="fixed bottom-6 right-6 z-50 transform translate-y-32 opacity-0 transition-all duration-300 bg-gray-900 text-white px-6 py-3.5 rounded-2xl shadow-2xl flex items-center gap-3 border border-purple-500/30">
-        <i id="toast-icon" class="fa-solid fa-circle-check text-green-400 text-lg"></i>
-        <span id="toast-text" class="text-sm font-medium">Produto adicionado à sacola!</span>
-    </div>
-
-    <!-- SCRIPT DE FUNCIONALIDADES E E-COMMERCE -->
+    <!-- JavaScript Application Logic -->
     <script>
-        // BASE DE DADOS DOS PRODUTOS DA VERA KIDS
         const products = [
             {
                 id: 1,
                 name: "Vestido Arco-Íris Pastel",
-                category: "meninas",
+                category: "girls",
                 price: 89.90,
                 oldPrice: 119.90,
-                image: "https://placehold.co/500x500/fce7f3/db2777?text=Vestido+Arco-Iris",
-                description: "Vestido rodado com estampa em tons pastel e tecido 100% algodão macio. Perfeito para festas e passeios.",
-                sizes: ["1 ano", "2 anos", "4 anos", "6 anos"]
+                tag: "Mais Vendido",
+                image: "https://images.unsplash.com/photo-1518895949257-7621c3c786d7?q=80&w=800&auto=format&fit=crop",
+                description: "Vestido encantador com camadas de tule em tons pastel, corpete macio e detalhes estelares. Perfeito para festas e momentos especiais.",
+                sizes: ["1 Ano", "2 Anos", "4 Anos", "6 Anos"]
             },
             {
                 id: 2,
-                name: "Conjunto Dinossauro Divertido",
-                category: "meninos",
-                price: 79.90,
-                oldPrice: 99.90,
-                image: "https://placehold.co/500x500/dbeafe/2563eb?text=Conjunto+Dino",
-                description: "Conjunto em moletinho leve com estampa lúdica de dinossauro. Máximo conforto para brincar o dia todo.",
-                sizes: ["2 anos", "4 anos", "6 anos", "8 anos"]
+                name: "Conjunto Dino Divertido",
+                category: "boys",
+                price: 69.90,
+                oldPrice: 89.90,
+                tag: "Destaque",
+                image: "https://images.unsplash.com/photo-1503944583220-7eeec395dcb5?q=80&w=800&auto=format&fit=crop",
+                description: "Conjunto em algodão antialérgico com estampa divertida de dinossauros. Conforto total para o dia a dia.",
+                sizes: ["2 Anos", "3 Anos", "4 Anos", "5 Anos"]
             },
             {
                 id: 3,
-                name: "Macacão Algodão Ursinho",
-                category: "bebes",
-                price: 65.90,
+                name: "Macacão Ursinho Fofinho",
+                category: "babies",
+                price: 59.90,
                 oldPrice: 79.90,
-                image: "https://placehold.co/500x500/f3e8ff/7c3aed?text=Macacao+Ursinho",
-                description: "Macacão super fofinho com pezinho reversível e botões de pressão antialérgicos para facilitar a troca.",
-                sizes: ["RN", "P (3m)", "M (6m)", "G (12m)"]
+                tag: "Bebê",
+                image: "https://images.unsplash.com/photo-1522771930-78848d9293e8?q=80&w=800&auto=format&fit=crop",
+                description: "Macacão super macio com capuz de orelhinhas de urso. Ideal para manter os recém-nascidos aquecidos com muito estilo.",
+                sizes: ["Recém-Nascido", "3 Meses", "6 Meses", "12 Meses"]
             },
             {
                 id: 4,
-                name: "Tênis Infantil Confort Glow",
-                category: "calcados",
-                price: 119.90,
-                oldPrice: 149.90,
-                image: "https://placehold.co/500x500/fef3c7/d97706?text=Tenis+Confort",
-                description: "Tênis anatômico, leve e flexível que respeita o crescimento natural dos pezinhos. Fechamento em velcro prático.",
-                sizes: ["20", "22", "24", "26", "28"]
+                name: "Tênis Infantil Luzinha Estelar",
+                category: "shoes",
+                price: 99.90,
+                oldPrice: 129.90,
+                tag: "Novo",
+                image: "https://images.unsplash.com/photo-1514989940753-eaf05cf8eb1a?q=80&w=800&auto=format&fit=crop",
+                description: "Tênis anatômico com luzes LED a cada passada e fecho em velcro prático. Conforto e diversão para os pés.",
+                sizes: ["22 ao 23", "24 ao 25", "26 ao 27"]
             },
             {
                 id: 5,
-                name: "Jardineira Jeans Estrelinha",
-                category: "meninas",
-                price: 99.90,
-                oldPrice: 129.90,
-                image: "https://placehold.co/500x500/ede9fe/7c3aed?text=Jardineira+Estrelinha",
-                description: "Jardineira em jeans amaciado com elastano para maior flexibilidade. Acompanha blusinha de algodão.",
-                sizes: ["2 anos", "4 anos", "6 anos", "8 anos"]
+                name: "Conjunto Princesa Bella",
+                category: "girls",
+                price: 79.90,
+                oldPrice: 99.90,
+                tag: "Promoção",
+                image: "https://images.unsplash.com/photo-1622290291468-a28f7a7dc6a8?q=80&w=800&auto=format&fit=crop",
+                description: "Blusa delicada com babados e saia confortável em algodão com estampa floral suave.",
+                sizes: ["2 Anos", "4 Anos", "6 Anos", "8 Anos"]
             },
             {
                 id: 6,
-                name: "Camiseta Polo Marinheiro",
-                category: "meninos",
-                price: 59.90,
-                oldPrice: 75.00,
-                image: "https://placehold.co/500x500/e0f2fe/0284c7?text=Polo+Marinheiro",
-                description: "Camiseta polo em piquet macio com detalhes listrados. Elegância e conforto para os pequenos.",
-                sizes: ["4 anos", "6 anos", "8 anos", "10 anos"]
-            },
-            {
-                id: 7,
-                name: "Body Tricô Comfy Bebê",
-                category: "bebes",
-                price: 69.90,
-                oldPrice: 85.00,
-                image: "https://placehold.co/500x500/fae8ff/c084fc?text=Body+Trico",
-                description: "Body delicado em tricô antialérgico com tramas especiais. Mantém o bebê aquecido com muito estilo.",
-                sizes: ["RN", "P (3m)", "M (6m)", "G (12m)"]
-            },
-            {
-                id: 8,
-                name: "Sandalinha Anatômica Arco-Íris",
-                category: "calcados",
-                price: 79.90,
-                oldPrice: 95.00,
-                image: "https://placehold.co/500x500/fee2e2/dc2626?text=Sandalia+Arco-Iris",
-                description: "Sandalinha macia com solado antiderrapante e detalhes coloridos inspirados no arco-íris.",
-                sizes: ["18", "19", "20", "22", "24"]
+                name: "Jardineira Jeans Adventure",
+                category: "boys",
+                price: 84.90,
+                oldPrice: 109.90,
+                tag: "Estiloso",
+                image: "https://images.unsplash.com/photo-1519457431-44ccd64a579b?q=80&w=800&auto=format&fit=crop",
+                description: "Jardineira jeans com elastano para maior flexibilidade e conforto nas brincadeiras.",
+                sizes: ["1 Ano", "2 Anos", "3 Anos", "4 Anos"]
             }
         ];
 
-        // CARRINHO DE COMPRAS (ESTADO)
         let cart = [];
 
-        // RENDERIZAÇÃO DOS PRODUTOS
-        function renderProducts(filter = 'todos') {
+        function renderProducts(filter = 'all') {
             const grid = document.getElementById('product-grid');
             grid.innerHTML = '';
-
-            const filtered = filter === 'todos' 
-                ? products 
-                : products.filter(p => p.category === filter);
-
-            if (filtered.length === 0) {
-                grid.innerHTML = `
-                    <div class="col-span-full text-center py-12">
-                        <p class="text-gray-500 font-medium">Nenhum produto encontrado nesta categoria no momento.</p>
-                    </div>
-                `;
-                return;
-            }
+            
+            const filtered = filter === 'all' ? products : products.filter(p => p.category === filter);
 
             filtered.forEach(product => {
-                const discount = Math.round(((product.oldPrice - product.price) / product.oldPrice) * 100);
                 const card = document.createElement('div');
-                card.className = "bg-white rounded-3xl p-4 shadow-sm hover:shadow-xl transition-all duration-300 border border-purple-100/60 flex flex-col group relative";
-                
+                card.className = "bg-white rounded-2xl p-4 shadow-sm hover:shadow-xl transition-all border border-pink-50 flex flex-col justify-between group";
                 card.innerHTML = `
-                    <div class="relative w-full aspect-square bg-purple-50/50 rounded-2xl overflow-hidden mb-4 cursor-pointer" onclick="openProductModal(${product.id})">
-                        <span class="absolute top-3 left-3 z-10 bg-pink-500 text-white text-xs font-bold px-2.5 py-1 rounded-full shadow-md">-${discount}%</span>
-                        <img src="${product.image}" alt="${product.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                        <div class="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                            <span class="bg-white/90 backdrop-blur-md text-purple-700 font-semibold px-4 py-2 rounded-xl text-xs shadow-md">Ver Detalhes</span>
+                    <div>
+                        <div class="relative rounded-xl overflow-hidden mb-4 aspect-square bg-gray-100">
+                            <img src="${product.image}" alt="${product.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                            <span class="absolute top-3 left-3 bg-veraPink text-white text-xs font-fun font-bold px-3 py-1 rounded-full shadow-md">${product.tag}</span>
                         </div>
+                        <h3 class="font-fun font-bold text-lg text-gray-900 mb-1">${product.name}</h3>
+                        <p class="text-xs text-gray-500 line-clamp-2 mb-3">${product.description}</p>
                     </div>
-                    <div class="flex-grow flex flex-col justify-between">
-                        <div>
-                            <span class="text-xs font-semibold text-purple-600 uppercase tracking-wider">${product.category}</span>
-                            <h4 class="font-fun font-bold text-gray-800 text-base mt-1 line-clamp-1">${product.name}</h4>
+                    <div>
+                        <div class="flex items-center gap-2 mb-4">
+                            <span class="text-xl font-fun font-bold text-veraPink">R$ ${product.price.toFixed(2).replace('.', ',')}</span>
+                            <span class="text-xs text-gray-400 line-through">R$ ${product.oldPrice.toFixed(2).replace('.', ',')}</span>
                         </div>
-                        <div class="mt-4 flex items-center justify-between">
-                            <div>
-                                <span class="text-xs text-gray-400 line-through">R$ ${product.oldPrice.toFixed(2).replace('.', ',')}</span>
-                                <div class="font-fun font-bold text-purple-600 text-lg">R$ ${product.price.toFixed(2).replace('.', ',')}</div>
-                            </div>
-                            <button onclick="quickAddToCart(${product.id})" class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-purple-600 to-pink-500 hover:opacity-90 text-white flex items-center justify-center shadow-md shadow-purple-500/20 transition-transform active:scale-95" title="Adicionar à Sacola">
-                                <i class="fa-solid fa-plus"></i>
-                            </button>
-                        </div>
+                        <button onclick="openProductModal(${product.id})" class="w-full bg-pink-50 hover:bg-veraPink hover:text-white text-veraPink font-fun font-semibold py-2.5 rounded-xl transition-colors text-sm flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-eye"></i> Ver Detalhes & Comprar
+                        </button>
                     </div>
                 `;
                 grid.appendChild(card);
             });
         }
 
-        // FILTRAR CATEGORIAS
         function filterCategory(category) {
-            // Atualizar botões visuais
-            document.querySelectorAll('.filter-btn').forEach(btn => {
-                btn.classList.remove('bg-purple-600', 'text-white', 'active-filter');
-                btn.classList.add('bg-white', 'text-gray-700', 'border', 'border-purple-100');
+            document.querySelectorAll('.cat-btn').forEach(btn => {
+                btn.className = "cat-btn px-6 py-2.5 rounded-full font-fun font-medium bg-white text-gray-600 border border-gray-200 hover:border-veraPink transition-all";
             });
-            event.target.classList.remove('bg-white', 'text-gray-700', 'border', 'border-purple-100');
-            btnTarget = event.target;
-            btnTarget.classList.add('bg-purple-600', 'text-white', 'active-filter');
-
+            event.target.className = "cat-btn px-6 py-2.5 rounded-full font-fun font-medium bg-veraPink text-white shadow-md transition-all";
             renderProducts(category);
         }
 
-        // TOGGLE MENU MOBILE
-        function toggleMobileMenu() {
-            const menu = document.getElementById('mobile-menu');
-            const icon = document.getElementById('menu-icon');
-            menu.classList.toggle('hidden');
-            if(menu.classList.contains('hidden')) {
-                icon.className = "fa-solid fa-bars text-2xl";
-            } else {
-                icon.className = "fa-solid fa-xmark text-2xl";
-            }
-        }
-
-        // TOGGLE CARRINHO (DRAWER)
-        function toggleCart() {
-            const drawer = document.getElementById('cart-drawer');
-            const backdrop = document.getElementById('cart-backdrop');
-            const panel = document.getElementById('cart-panel');
-
-            if (drawer.classList.contains('hidden')) {
-                drawer.classList.remove('hidden');
-                setTimeout(() => {
-                    backdrop.classList.remove('opacity-0');
-                    panel.classList.remove('translate-x-full');
-                }, 10);
-                updateCartUI();
-            } else {
-                backdrop.classList.add('opacity-0');
-                panel.classList.add('translate-x-full');
-                setTimeout(() => {
-                    drawer.classList.add('hidden');
-                }, 300);
-            }
-        }
-
-        // ADICIONAR AO CARRINHO (RÁPIDO)
-        function quickAddToCart(productId) {
-            const product = products.find(p => p.id === productId);
-            const defaultSize = product.sizes[0];
-            
-            const existingItem = cart.find(item => item.id === productId && item.size === defaultSize);
-            if (existingItem) {
-                existingItem.quantity += 1;
-            } else {
-                cart.push({
-                    id: product.id,
-                    name: product.name,
-                    price: product.price,
-                    image: product.image,
-                    size: defaultSize,
-                    quantity: 1
-                });
-            }
-
-            updateCartBadge();
-            showToast(`Adicionado: ${product.name} (${defaultSize})`);
-        }
-
-        // ADICIONAR DO MODAL
-        function addToCartFromModal(productId) {
-            const product = products.find(p => p.id === productId);
-            const sizeSelect = document.getElementById('modal-size-select');
-            const selectedSize = sizeSelect ? sizeSelect.value : product.sizes[0];
-
-            const existingItem = cart.find(item => item.id === productId && item.size === selectedSize);
-            if (existingItem) {
-                existingItem.quantity += 1;
-            } else {
-                cart.push({
-                    id: product.id,
-                    name: product.name,
-                    price: product.price,
-                    image: product.image,
-                    size: selectedSize,
-                    quantity: 1
-                });
-            }
-
-            closeModal();
-            updateCartBadge();
-            toggleCart();
-            showToast(`Adicionado com sucesso!`);
-        }
-
-        // ATUALIZAR BADGE DO CARRINHO
-        function updateCartBadge() {
-            const badge = document.getElementById('cart-badge');
-            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-            
-            if (totalItems > 0) {
-                badge.textContent = totalItems;
-                badge.classList.remove('hidden');
-            } else {
-                badge.classList.add('hidden');
-            }
-        }
-
-        // ATUALIZAR INTERFACE DO CARRINHO
-        function updateCartUI() {
-            const container = document.getElementById('cart-items-container');
-            const countSpan = document.getElementById('cart-item-count');
-            const subtotalSpan = document.getElementById('cart-subtotal');
-            const totalSpan = document.getElementById('cart-total');
-
-            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-            countSpan.textContent = totalItems;
-
-            if (cart.length === 0) {
-                container.innerHTML = `
-                    <div class="text-center py-12 space-y-3">
-                        <div class="w-16 h-16 bg-purple-50 text-purple-400 rounded-full flex items-center justify-center mx-auto text-2xl">
-                            <i class="fa-solid fa-bag-shopping"></i>
-                        </div>
-                        <p class="text-gray-500 font-medium text-sm">Sua sacola está vazia.</p>
-                        <p class="text-xs text-gray-400">Escolha lindas roupinhas para os pequenos!</p>
-                    </div>
-                `;
-                subtotalSpan.textContent = 'R$ 0,00';
-                totalSpan.textContent = 'R$ 0,00';
-                return;
-            }
-
-            container.innerHTML = '';
-            let subtotal = 0;
-
-            cart.forEach((item, index) => {
-                const itemTotal = item.price * item.quantity;
-                subtotal += itemTotal;
-
-                const itemDiv = document.createElement('div');
-                itemDiv.className = "flex items-center gap-4 py-4";
-                itemDiv.innerHTML = `
-                    <img src="${item.image}" alt="${item.name}" class="w-20 h-20 object-cover rounded-2xl bg-purple-50 border border-purple-100 flex-shrink-0">
-                    <div class="flex-grow">
-                        <h5 class="font-fun font-bold text-gray-800 text-sm line-clamp-1">${item.name}</h5>
-                        <p class="text-xs text-gray-500 mt-0.5">Tamanho: <span class="font-semibold text-purple-600">${item.size}</span></p>
-                        <div class="flex items-center justify-between mt-2">
-                            <div class="flex items-center border border-gray-200 rounded-xl overflow-hidden bg-white">
-                                <button onclick="updateQuantity(${index}, -1)" class="px-2.5 py-1 text-gray-500 hover:bg-gray-100 transition-colors">-</button>
-                                <span class="px-3 text-xs font-bold text-gray-800">${item.quantity}</span>
-                                <button onclick="updateQuantity(${index}, 1)" class="px-2.5 py-1 text-gray-500 hover:bg-gray-100 transition-colors">+</button>
-                            </div>
-                            <span class="font-bold text-purple-600 text-sm">R$ ${itemTotal.toFixed(2).replace('.', ',')}</span>
-                        </div>
-                    </div>
-                    <button onclick="removeItem(${index})" class="text-gray-400 hover:text-red-500 p-2 transition-colors">
-                        <i class="fa-solid fa-trash-can text-sm"></i>
-                    </button>
-                `;
-                container.appendChild(itemDiv);
-            });
-
-            subtotalSpan.textContent = `R$ ${subtotal.toFixed(2).replace('.', ',')}`;
-            totalSpan.textContent = `R$ ${subtotal.toFixed(2).replace('.', ',')}`;
-        }
-
-        // MODIFICAR QUANTIDADE NO CARRINHO
-        function updateQuantity(index, change) {
-            cart[index].quantity += change;
-            if (cart[index].quantity <= 0) {
-                cart.splice(index, 1);
-            }
-            updateCartBadge();
-            updateCartUI();
-        }
-
-        // REMOVER ITEM
-        function removeItem(index) {
-            cart.splice(index, 1);
-            updateCartBadge();
-            updateCartUI();
-            showToast("Item removido da sacola.");
-        }
-
-        // CHECKOUT VIA WHATSAPP
-        function checkoutWhatsApp() {
-            if (cart.length === 0) {
-                showToast("Sua sacola está vazia!");
-                return;
-            }
-
-            let message = "Olá! Gostaria de finalizar o seguinte pedido na *Vera Kids*:\n\n";
-            let subtotal = 0;
-
-            cart.forEach(item => {
-                const itemTotal = item.price * item.quantity;
-                subtotal += itemTotal;
-                message += `• ${item.quantity}x ${item.name} (Tam: ${item.size}) - R$ ${itemTotal.toFixed(2).replace('.', ',')}\n`;
-            });
-
-            message += `\n*Total do Pedido: R$ ${subtotal.toFixed(2).replace('.', ',')}*\n\nAguardo instruções para pagamento e envio!`;
-
-            const encodedMessage = encodeURIComponent(message);
-            const whatsappUrl = `https://wa.me/5511999999999?text=${encodedMessage}`;
-            window.open(whatsappUrl, '_blank');
-        }
-
-        // ABRIR MODAL DO PRODUTO
-        function openProductModal(productId) {
-            const product = products.find(p => p.id === productId);
+        function openProductModal(id) {
+            const product = products.find(p => p.id === id);
             const modal = document.getElementById('product-modal');
             const content = document.getElementById('modal-content');
 
             content.innerHTML = `
-                <div class="w-full aspect-square bg-purple-50 rounded-2xl overflow-hidden border border-purple-100 shadow-inner">
-                    <img src="${product.image}" alt="${product.name}" class="w-full h-full object-cover">
-                </div>
-                <div class="space-y-4">
-                    <div>
-                        <span class="text-xs font-bold text-purple-600 uppercase tracking-wider bg-purple-50 px-3 py-1 rounded-full">${product.category}</span>
-                        <h3 class="font-fun text-2xl font-bold text-gray-900 mt-2">${product.name}</h3>
-                        <p class="text-gray-600 text-sm mt-2 leading-relaxed">${product.description}</p>
+                <div class="p-6 sm:p-8">
+                    <img src="${product.image}" alt="${product.name}" class="w-full h-64 object-cover rounded-2xl mb-6 shadow-md">
+                    <span class="bg-pink-100 text-veraPink text-xs font-fun font-bold px-3 py-1 rounded-full">${product.tag}</span>
+                    <h3 class="font-fun font-bold text-2xl text-gray-900 mt-2 mb-2">${product.name}</h3>
+                    <p class="text-gray-600 text-sm mb-4">${product.description}</p>
+                    
+                    <div class="mb-4">
+                        <label class="block font-fun font-bold text-xs text-gray-700 mb-2 uppercase tracking-wider">Selecione o Tamanho:</label>
+                        <div id="size-options" class="flex flex-wrap gap-2">
+                            ${product.sizes.map((size, idx) => `
+                                <button onclick="selectSize('${size}')" class="size-btn px-4 py-2 rounded-xl font-medium text-sm border border-gray-200 hover:border-veraPink ${idx === 0 ? 'border-veraPink bg-pink-50 text-veraPink font-bold' : 'text-gray-700'}">${size}</button>
+                            `).join('')}
+                        </div>
                     </div>
 
-                    <div>
-                        <label class="block text-xs font-bold text-gray-700 uppercase mb-2">Escolha o Tamanho:</label>
-                        <select id="modal-size-select" class="w-full bg-purple-50/50 border border-purple-200 rounded-xl px-4 py-2.5 text-sm font-semibold text-gray-800 focus:outline-none focus:border-purple-500">
-                            ${product.sizes.map(size => `<option value="${size}">${size}</option>`).join('')}
-                        </select>
-                    </div>
-
-                    <div class="flex items-baseline gap-3 pt-2">
-                        <span class="text-sm text-gray-400 line-through">R$ ${product.oldPrice.toFixed(2).replace('.', ',')}</span>
-                        <span class="font-fun font-bold text-purple-600 text-2xl">R$ ${product.price.toFixed(2).replace('.', ',')}</span>
-                    </div>
-
-                    <button onclick="addToCartFromModal(${product.id})" class="w-full bg-gradient-to-r from-purple-600 to-pink-500 hover:opacity-90 text-white font-bold py-3.5 rounded-2xl shadow-lg shadow-purple-500/25 transition-all flex items-center justify-center gap-2">
-                        <i class="fa-solid fa-bag-shopping"></i>
-                        <span>Adicionar à Sacola</span>
-                    </button>
-                </div>
-            `;
-
-            modal.classList.remove('hidden');
-        }
-
-        // FECHAR MODAL
-        function closeModal() {
-            document.getElementById('product-modal').classList.add('hidden');
-        }
-
-        // MOSTRAR TOAST (ALERTA FLUTUANTE)
-        function showToast(text) {
-            const toast = document.getElementById('toast-message');
-            const toastText = document.getElementById('toast-text');
-            toastText.textContent = text;
-            
-            toast.classList.remove('translate-y-32', 'opacity-0');
-            setTimeout(() => {
-                toast.classList.add('translate-y-32', 'opacity-0');
-            }, 3000);
-        }
-
-        // NEWSLETTER SUBMIT
-        function subscribeNewsletter(e) {
-            e.preventDefault();
-            showToast("Inscrição realizada com sucesso! Verifique seu e-mail.");
-            e.target.reset();
-        }
-
-        // INICIALIZAR AO CARREGAR A PÁGINA
-        window.onload = function() {
-            renderProducts('todos');
-        };
-    </script>
-</body>
-</html>
+                    <div class="flex items-center justify-between pt-4 border-t border-gray-100 mt-6">
+                        <div>
+                            <span class="text-xs text-gray-400 block">Preço Especial</span>
+                            <span class="text-2xl font-fun font-bold text-veraPink">R$ ${product.price.toFixed(2).replace('.', ',')}</span>
+                        </div>
+                        <button onclick="addToCartFromModal(${product.id})" class="bg-gradient-to-r from-veraPink to-purple-600 text-white font-fun font-bold px-6 py-3 rounded-full shadow-lg hover:shadow-xl transition-all">
