@@ -121,7 +121,7 @@
                 </div>
             </div>
 
-            <!-- Hero Image / Visual Banner (Agora clicável para abrir o Vestido Arco-Íris) -->
+            <!-- Hero Image / Visual Banner (Clicável para abrir o Vestido Arco-Íris) -->
             <div class="relative flex justify-center">
                 <div onclick="openProductModal(1)" class="relative w-full max-w-md rounded-3xl bg-gradient-to-tr from-pink-200 via-purple-200 to-yellow-100 p-3 shadow-2xl animate-float cursor-pointer group">
                     <img src="vestido.jpg.jfif" alt="Vestido Arco-Íris Pastel" class="rounded-2xl object-cover w-full h-[420px] group-hover:scale-[1.02] transition-transform">
@@ -565,7 +565,7 @@
             cart.forEach(item => {
                 const sub = item.price * item.qty;
                 total += sub;
-                message += `• ${item.qty}x ${item.name} (Tamanho: ${item.size}) - R$ ${sub.toFixed(2).replace('.', ',')} \n`;
+                message += `• ${item.qty}x ${item.name} (Tamanho: ${item.size}) - R$ ${sub.toFixed(2).replace('.', ',')}\n`;
             });
 
             message += `\n*Total do Pedido: R$ ${total.toFixed(2).replace('.', ',')}*\n\nAguardo instruções para pagamento e entrega!`;
